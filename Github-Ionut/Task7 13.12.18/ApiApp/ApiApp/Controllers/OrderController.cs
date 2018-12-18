@@ -11,11 +11,13 @@ namespace ApiApp.Controllers
     
     public class OrderController : ApiController
     {
+
+        List<Order> orders = OrderDataStore.Current.Orders;
+
         [HttpGet]
         [Route("api/Order/")]
         public IHttpActionResult Get()
         {
-            var orders = OrderDataStore.Current.Orders;
             return Ok(orders);
         }
 
@@ -23,9 +25,9 @@ namespace ApiApp.Controllers
         [Route("api/Order/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var order = OrderDataStore.Current.Orders;
+            
             Order myOrder = new Order();
-            foreach(Order o in order)
+            foreach(Order o in orders)
             {
                 if(o.Id == id)
                 {
@@ -38,17 +40,16 @@ namespace ApiApp.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("api/Order/")]
         public IHttpActionResult Post([FromBody] Order o)
         {
-            
-            var order = OrderDataStore.Current.Orders;
-            order.Add(o);
+                       
+            orders.Add(o);
       
-            if(order.Contains(o))
+            if(orders.Contains(o))
             {
-                Created("api/Order/", o);
-                return Ok(order);
+
+                return Created("api/Order/", o);
             }
             else
             {
@@ -56,8 +57,44 @@ namespace ApiApp.Controllers
             }
             
         }
-     
+
 
      
+
+        [HttpDelete]
+        [Route("api/Order/{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+ 
+            bool isEmpty = !orders.Any();
+           
+            Order myOrder = new Order();
+            foreach (Order o in orders)
+            {
+               if (o.Id == id)
+               {
+                  myOrder = o;
+               }
+            }
+
+            if (orders.Remove(myOrder))
+            {
+                return Ok(orders);
+            }
+            else if (isEmpty)
+            {
+                return ResponseMessage(new HttpResponseMessage(HttpStatusCode.NoContent));
+            }
+            else
+            {
+                return NotFound();
+            }
+          
+         
+        }
+
+       
+
+       
     }
 }
