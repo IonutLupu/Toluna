@@ -1,0 +1,46 @@
+.Home
+{
+    width:100%
+}
+.Home img
+{
+    width:100%;
+    height:680px;
+    float:left;
+}
+
+.Home .TextBox
+{
+    width:25%;
+    
+    height:25px;
+    position:relative;
+    left:900px;
+    top:100px;
+    float:left;
+}
+
+.Home .Button
+{
+    margin:0px;
+    width:6%;
+    height:30px;
+    border:none;
+    float:left;
+    position:relative;
+    left:900px;
+    top:100px;
+    background-color:darkgrey;
+    color: white;
+}
+
+
+
+.Home span img
+{
+    width:20px;
+    height:25px;
+    position:relative;
+    left:875px;
+    top:100px;
+}
