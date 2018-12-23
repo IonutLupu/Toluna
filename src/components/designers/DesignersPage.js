@@ -4,34 +4,31 @@ import Second from '../assets/2.jpeg';
 import Third from '../assets/3.jpeg';
 import styled from "styled-components";
 
-
-
 const ColorText = styled.div`
-    background-color: gray;
+    background-color: lightgray;
 `;
 
 const Text = styled.div`
-    position: relative;
-    left:1000px;
-    text-align: center;
-    width:30%;
+    margin-left: 1100px;
+    width:400px;
+    text-align:center;
+
 `;
 
 const Title = styled.h3`
-    position: relative;
-    left:1000px;
-    text-align: center;
-    width:30%;
+    margin-left: 1100px;
+    width:400px;
+    text-align:center;
+    font-size:150%;
 `;
 
-const ImgSubSection = styled.div `
-    position: relative;
-    top:15px; 
-`;
 
 const Images = styled.img`
-    width:25%;
-    height:25%;
+    margin:10px;
+`;
+
+const ImageContainer = styled.div`
+    margin-left:1050px;
 `;
 class Designers extends Component
 {
@@ -56,17 +53,15 @@ class Designers extends Component
                 </Text>
             </ColorText>
             <br></br>
-            <br></br>
-            <br></br>
             <Title>Our designers</Title>
-            <div className="ImgSection" align="right">
-                <Images src = {First}  />
-                <Images src = {Second}  />
+            <ImageContainer>
+                <Images src = {First} width="250px" height="auto" />
+                <Images src = {Second} width="250px" height="auto" />
                 
-                <ImgSubSection>
-                    <Images src = {Third}  />
-                </ImgSubSection>
-            </div>
+                <div>
+                    <Images src = {Third} width="520px" height="auto"/>
+                </div>
+            </ImageContainer>
              
           </div>
         );
